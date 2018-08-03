@@ -1,0 +1,503 @@
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% LaTeX4EI Example for Cheat Sheets
+%
+% @encode: 	UTF-8, tabwidth = 4, newline = LF
+% @author:	LaTeX4EI
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+
+% ======================================================================
+% Document Settings
+% ======================================================================
+
+
+% possible options: color/nocolor, english/german, threecolumn
+% default: color, english
+
+\documentclass[english,threecolumn,color]{latex4ei/latex4ei_sheet}
+%\colorlet{col_sectionbox}{tum_red}
+\usepackage{amsmath}
+
+% set document information
+\title{Verbrennungsmotoren\\ Formelsammlung}
+\author{S.Mützel / M.Grönke / P.Abu El Soud}	        % optional, delete if unchanged
+%\myemail{samuel.muetzel@alumni.fh-aachen.de}			% optional, delete if unchanged
+
+
+% DOCUMENT_BEGIN ===============================================================
+\begin{document}
+
+\IfFileExists{git.id}{\input{git.id}}{}
+\ifdefined\GitRevision\mydate{\GitNiceDate\ (git \GitRevision)}\fi
+
+\maketitle	% requires ./img/Logo.pdf
+\colorlet{col_sectionbox}{schwarz}
+\begin{sectionbox}
+	\begin{align*}
+		\eta_{e}&= \overbrace{\underbrace{ \eta_{V}-\varDelta \eta_{BV} -\varDelta \eta_{W}-\varDelta \eta_{U}-}_{\eta_{i,HD}} \varDelta \eta_{LW}}^{\eta_i} -\varDelta \eta_{R}
+	\end{align*}
+\end{sectionbox}
+
+% SECTION ====================================================================================
+\section{Grundlagen}
+% ============================================================================================
+\colorlet{col_sectionbox}{dunkelblau}
+\begin{sectionbox}
+	\begin{align*}
+		g_i&=\frac{m_i}{\sum_{i} m_i} \overset{n_i=\frac{m_i}{M_i}}{=
+		}\frac{M_i}{\sum_{i}\psi_i M_i}\psi_i \qquad
+	    r_i=\frac{V_i}{\sum_{i} V_i} \qquad\psi_i=\frac{n_i}{\sum_{i} n_i}\\
+		M&=\sum_{i}\psi_i M_i = \left( \sum_{i} \frac{g_i}{M_i} \right)^{-1}
+	\end{align*}
+\end{sectionbox}
+
+\begin{sectionbox}
+	\begin{align*}
+		R_i&=c_{p,i} -c_{v,i} \quad  \&  \quad \kappa_i = \frac{c_{p,i}}{c_{v,i}} \quad \Rightarrow c_{v,i}=\frac{R_i}{\kappa_i-1}\\
+		R_g&=\sum_{i} g_i R_i= \begin{cases}
+		\text{Otto:} & R_L + g_B (R_B-R_L)\\\\
+		\text{Diesel:} & R_L
+		\end{cases} \quad \text{mit} \begin{cases}
+			R_i=\frac{R_M}{M_i}\\\\
+			g_B=\frac{1}{1+\lambda \, L_{St}}
+		\end{cases}
+		%R_G&=\sum_{i} g_i R_i  \quad \text{mit} \quad R_i=\frac{R_M}{M_i} \quad \text{und} %g_B=\frac{1}{1+\lambda \, L_{St}}=1-g_L
+	\end{align*}
+\end{sectionbox}
+
+\begin{sectionbox}
+	\begin{align*}
+		\rho&=\frac{1}{v}=\frac{m}{V}
+	\end{align*}
+\end{sectionbox}
+
+
+% SECTION ====================================================================================
+\section{Kreisprozesse}
+% ============================================================================================
+\colorlet{col_sectionbox}{blau}
+\begin{sectionbox}
+	\begin{align*}
+		p_{i+1}&=\varepsilon^\kappa \, p_i \qquad T_{i+1}=\varepsilon^{\kappa-1}\,T_i
+	\end{align*}
+\end{sectionbox}
+\begin{sectionbox}
+
+	\begin{align*}
+		\eta_{th,GD} &= 1- \frac{1}{\kappa \cdot q^{*}}\left[\left( \frac{q^{*}}{\varepsilon^{\kappa-1}} +1 \right)^\kappa -1 \right] \qquad q^{*}= \frac{q_{zu}}{c_p \cdot T_1}\\
+			w_{t,GD} &=- \sum_{i} q_{i,i+1} = -\frac{R}{\kappa-1}\left[ \kappa\left(T_3 -T_2\right)-\left(T_4-T_1\right) \right]
+	\end{align*}
+
+\end{sectionbox}
+\begin{sectionbox}
+	\begin{align*}
+		\eta_{th,GR} &= 1- \frac{T_4-T_1}{T_3-T_2} = 1- \frac{1}{\varepsilon^{\kappa-1}}\\
+		w_{t,GR} &=- \sum_{i} q_{i,i+1} = -\frac{R}{\kappa-1}\left[ \left(T_3 -T_2\right)-\left(T_4-T_1\right) \right]
+	\end{align*}
+\end{sectionbox}
+
+\begin{sectionbox}
+	\begin{align*}
+		\eta_{th,SEI}&= 1- \frac{\left(T_5-T_1\right)}{\left(T_3-T_2\right)+\kappa\left(T_4-T_3\right)}\\
+		w_{t,SEI}&= -\frac{R}{\kappa-1}\left[\left(T_3 -T_2\right)+\kappa\left(T_4-T_3\right)-\left(T_5-T_1\right) \right]\\
+		T_{4,SEI} &=\left[ \left( \frac{p_{3'}}{p_1} \cdot T_1\right)^{\frac{1-\kappa}{\kappa}} \cdot T_{3'}\right]^\kappa
+	\end{align*}
+\end{sectionbox}
+% SECTION ====================================================================================
+\section{Kenngrößen}
+% ============================================================================================
+\colorlet{col_sectionbox}{hellgruen}
+\begin{sectionbox}
+	\begin{align*}
+	&P_{(e,i,r)}=p_{m(e,i,r)} \, i\, n\, V_H & P_e=P_i-P_r= M \omega\qquad & \varepsilon=\frac{V_h+V_c\, (+V_{KM})}{V_c\, (+V_{KM})}
+	\end{align*}
+\end{sectionbox}
+
+\begin{sectionbox}
+	\begin{align*}
+	\eta_{(e,i)}&=\frac{P_{(e,i)}}{\dot{m}_B \,  H_u}=\frac{1}{b_{(e,i)} H_u}\\
+	\eta_m &= \frac{P_e}{P_i}=\frac{p_{me}}{p_{mi}}=\frac{\eta_{e}}{\eta_{i}} = 1-\frac{p_{mr}}{p_{mi}}=\frac{b_i}{b_e}
+	\end{align*}
+\end{sectionbox}
+
+\begin{sectionbox}
+	\begin{align*}
+	p_{m(e,i)}&=\eta_{(e,i)}\, \lambda_a \, H_G\\
+	p_{mi}&= \frac{W_{KA}}{V_h}
+	=\begin{cases}
+		\text{Otto:}&\frac{\eta_i \, V_G \, H_G}{V_h} = \eta_i \, \lambda_a \, H_G = \eta_i \frac{m_{FZ}}{\rho_{th} \,  V_h} \, \frac{H_u \, \rho_{G}}{\lambda\, L_{St}+1}\\\\
+		\text{Diesel:}&\frac{\eta_i \,V_L \, \bar{H}_G}{V_h} = \eta_i \, \lambda_a \,\bar{H}_G= \eta_i \frac{m_{FZ}}{\rho_{th} \,  V_h} \, \frac{H_u \, \rho_{L}}{\lambda\, L_{St}}\\
+	\end{cases}\\
+	p_{me}&= \frac{2\,\pi}{i}\, \frac{M}{V_H}= p_{mi} - p_{mr}
+	\end{align*}
+\end{sectionbox}
+\begin{sectionbox}
+	\begin {align*}
+		H_G &= \frac{m_B \, H_u}{V_G} =\frac{m_B \, H_u \, \rho_G}{m_G}
+		=\begin{cases}
+			\text{Otto:}&\frac{m_B \, H_u \, \rho_G}{m_B + m_L} =\frac{H_u \, \rho_G}{1+\lambda\, L_{St}}\\ \\
+			\text{Diesel:}&\frac{m_B \, H_u \, \rho_L}{m_L} =\frac{H_u \, \rho_L}{\lambda \, L_{St}}
+		\end{cases}
+	\end{align*}
+\end{sectionbox}
+\begin{sectionbox}
+	\begin{align*}
+		b_{(e,i)}&=\frac{\dot{m}_B}{P_{(e,i)}}=\frac{1}{\eta_{(e,i)} \, H_u}\\ %\frac{b_e}{b_i}&=\frac{p_{mi}}{p_{me}}=1+\frac{p_{mr}}{p_{me}}\\
+		B_S &= \frac{\dot{m}_B}{v_{Fzg}}=\frac{m_B}{s}=\frac{b_e \, P_e}{(\rho) \, v}
+	\end{align*}
+\end{sectionbox}
+
+\begin{sectionbox}
+	\begin{align*}
+		\lambda_a &= \frac{m_G}{V_H \, \rho_{th}} = \frac{\dot{m}_G}{\dot{V}_G \, \rho_{th}}\\ \lambda_l&= \frac{m_Z}{V_h \, \rho_{th}} \quad \text{mit} \quad m_Z=m_{ZL}+m_{ZB}
+	\end{align*}
+	\begin{align*}
+		\lambda&= \frac{\dot{m}_L}{\dot{m}_B \cdot L_{St}}=\frac{m_L}{m_B\cdot L_{St}}
+		\left(=\frac{\dot{m}_L}{ \sum_{i} \dot{m}_{B,i} \cdot L_{St,i}} \right)\\
+		\lambda_Z&=\frac{m_{ZL}}{m_{ZB}\cdot L_{St}}=\frac{m_{ZL}}{m_{B}\cdot L_{St}} \overset{\text{Spülung}}{\neq} \lambda
+	\end{align*}
+\end{sectionbox}
+\begin{sectionbox}
+	\begin{align*}
+		C_xH_y&O_z + \lambda o_{min}\left(O_2 + \frac{79}{21}N_2\right)
+		\rightarrow x CO_2 + \frac{y}{2}H_2O +\left(\lambda-1\right)o_{min} O_2\\
+		&+\lambda \, o_{min} \frac{79}{21} N_2
+	\end{align*}
+%\end{sectionbox}
+%\begin{sectionbox}
+	\begin{align*}
+		o_{min}& =  \left(x + \frac{y}{4} + q - \frac{z}{2}\right)\\
+		&o_{min, vol} =  l_{min} \cdot r_{O_2,fl} \qquad r_{O_2,fl}=0,21 \\
+		&o_{min, grav} =  l_{min} \cdot g_{O_2,fl} \qquad g_{O_2,fl} = 0,23142
+	\end{align*}
+\end{sectionbox}
+\begin{sectionbox}
+	\begin{align*}
+		L_{st}=\frac{M_{O_2}}{g_{O_2,fl} \cdot M_B}\left(x + \frac{y}{4} + q - \frac{z}{2}\right)&
+		=\frac{\left(2,664\,c+7,937\,h+0,998\,s-o\right)}{g_{O_2,fl}}\\
+		c=\frac{m_C}{m_B}= \frac{M_C}{M_B}\, x &\qquad h=\frac{M_{H_2}}{M_B} y=\frac{M_H}{2 M_B} y
+	\end{align*}
+\end{sectionbox}
+
+
+
+
+% SECTION ====================================================================================
+\section{Ladungswechsel 4-Takt}
+% ============================================================================================
+
+\colorlet{col_sectionbox}{gruen}
+\begin{sectionbox}
+	\begin{align*}
+		p_{mi}&=p_{mi,HD}+p_{mi,LW}=p_{mi,HD}+ |p_E-p_A|\\
+		p_{mi,HD}&=\frac{\dot{m}_B \cdot H_u}{i \, n \, V_H}\cdot \eta_{i,HD}\\
+	   \dot{m}_{G,AS,Zyl}&=\frac{\dot{m}_{G,ges}}{ i z}\frac{360^\circ KW}{\varDelta \alpha}\\
+		m_{G,AS,Zyl}&=\frac{m_{G,AS}}{z}=\frac{\dot{m}_{G,ges}}{i \, n \, z}
+	\end{align*}
+\end{sectionbox}
+\begin{sectionbox}
+\begin{align*}
+	\alpha_{(K,V)}&=\frac{A_S}{A_{(K,V)}}\\
+			   A_S&=\frac{\dot{m}_{G,AS,Zyl}}{c_S \cdot \rho_{S}}\\
+				  c_S&=\sqrt{\frac{2 \kappa}{\kappa -1} \, R_0 T_0 \left( 1- \left( \frac{p_{zm}}{p_0} \right)^{\frac{\kappa-1}{\kappa}} \right)}\\
+				  \rho_{S}&=\rho_{0} \, \left( \frac{p_{zm}}{p_0} \right)^{\frac{1}{\kappa}}\\
+				  \frac{\diff\alpha}{\diff t}&\approx \frac{\varDelta \alpha}{\varDelta t} = 2\,\pi\, n = 360^\circ KW \cdot n \\
+				   \varDelta t &= \frac{\varDelta s}{v}=\frac{2 \, l_{rohr}}{\sqrt{\kappa R_L T}}=\frac{m_{G,AS,Zyl}}{\dot{m}_S}
+\end{align*}
+\end{sectionbox}
+\begin{sectionbox}
+	\begin{align*}
+		x_R&=\frac{m_R}{m_R+m_Z}\\
+		& m_R= x_{spuel}\cdot \frac{p_Z \, V_c}{R_G \, T_Z}
+	\end{align*}
+\end{sectionbox}
+
+% SECTION ====================================================================================
+\section{Ladungswechsel 2-Takt}
+% ============================================================================================
+
+\colorlet{col_sectionbox}{orange}
+\begin{sectionbox}
+	\begin{align*}
+		\Lambda_S &=\frac{V_Z}{V_Zyl} = \frac{m_Z}{\rho_{zm}\, V_{ES}} \qquad
+		\Lambda_a =\frac{V_G}{V_{Zyl}} = \frac{V_G}{V_{ES}}
+	\end{align*}
+\end{sectionbox}
+
+%\columnbreak
+% SECTION ====================================================================================
+\section{Gemischbildung}
+% ============================================================================================
+% latex4ei uses the "mhchem" package version 3. Use the \ce{...} command to typeset chemical equations
+\colorlet{col_sectionbox}{braun}
+\begin{sectionbox}
+	\begin{align*}
+		x_{AGR}&=\frac{m_{AGR}}{m_L+m_B+m_{AGR}}
+	\end{align*}
+%\end{sectionbox}
+
+%\begin{sectionbox}
+	\begin{align*}
+		\lambda_{vergaser}&=\frac{1}{L_{St}} \, \frac{A_L}{A_B} \, \frac{\alpha_L}{\alpha_B}\, \varepsilon \, \sqrt{\frac{\varDelta p_L}{\varDelta p_B}} \, \sqrt{\frac{\varDelta \rho_L}{\varDelta \rho_L}}\\
+		\lambda_{injektor} &= \frac{\dot{m}_L}{L_{St}\cdot A_B \cdot \alpha_B \cdot t_E \cdot i \cdot n \cdot z \cdot \sqrt{2 \, \varDelta p \, \rho_B}}
+	\end{align*}
+\end{sectionbox}
+%\columnbreak
+
+% SECTION ====================================================================================
+\section{Aufladung}
+% ============================================================================================
+% latex4ei uses the "mhchem" package version 3. Use the \ce{...} command to typeset chemical equations
+\colorlet{col_sectionbox}{dunkelrot}
+\begin{sectionbox}
+
+	\begin{align*}
+	\lambda_{L,ATL}&=\lambda_{L,Saug} \left( \frac{T_{E,ATL}}{T_{E,Saug}}\right)^a \, \frac{\varepsilon}{\varepsilon-1} \qquad  a\in [0,2 \,;\, 0,5]\\
+	p_{mi,ATL}&=p_{mi,Saug} \, \frac{p_{E,ATL}}{p_{E,Saug}} \, \left( \frac{T_{E,ATL}}{T_{E,Saug}} \right)^{1-a}  \frac{\varepsilon}{\varepsilon-1}\\
+	& +p_{E,ATL}-p_{A,ATL}
+	\end{align*}
+\end{sectionbox}
+%\columnbreak
+\begin{sectionbox}
+
+	\begin{align*}
+		P_V&=\dot{m}_V \, w_V \, \frac{1}{\eta_{mV}} = \dot{m}_V \, w_{sV} \, \frac{1}{\eta_{siV}\,\eta_{mV}}\\
+		&w_{sV}=c_{p_V}\,T_1 \, \left[ \left( \frac{p_2}{p_1} \right)^{\frac{\kappa_V-1}{\kappa_V}} -1 \right]\\
+		&\eta_{siV}=\frac{T_{2s} -T_1}{T_2 -T_1}=\frac{\frac{T_{2s}}{T_1} -1}{\frac{T_{2}}{T_1} -1} = \frac{\left( \frac{p_{2}}{p_1}\right)^{\frac{\kappa_V-1}{\kappa_V}} -1}{\frac{T_{2}}{T_1} -1}\\
+		\dot{m}_{V,red}&=\dot{m}_V \, \frac{\sqrt{T_{ein}}}{p_{ein}} \qquad \dot{m}_{V,korr}=\dot{m}_{red} \, \frac{p_{ref}}{\sqrt{T_{ref}}}
+	\end{align*}
+\end{sectionbox}
+
+\begin{sectionbox}
+
+	\begin{align*}
+		P_T&=\dot{m}_T \, w_T \, \frac{1}{\eta_{mT}} = \dot{m}_T \, w_{sT} \, \eta_{siT}\,\eta_{mT}\\
+		&w_{sT}=c_{p_T}\,T_5 \, \left[1- \left( \frac{p_6}{p_5} \right)^{\frac{\kappa_T-1}{\kappa_T}}  \right]\\
+		\dot{m}_{T,red}&=\dot{m}_T \, \frac{\sqrt{T_5}}{p_5} \qquad \dot{m}_{T,korr}=\dot{m}_{red} \, \frac{p_{ref}}{\sqrt{T_{ref}}}
+	\end{align*}
+\end{sectionbox}
+\begin{sectionbox}
+	\begin{align*}
+		\eta^{*}_{ges}&=\frac{\dot{m}_A}{\dot{m}_V}\,\overbrace{\eta_{siT} \, \eta_{siV}  \underbrace{\eta_{mT} \eta_{mV}}_{ \eta_{mATL}}}^{\eta_{ATL}}=\frac{1+\lambda L_{St}}{\lambda L_{St}}\, \eta_{siT}\,  \eta_{siV}\, \eta_{mATL}\\
+		&= \frac{w_{sV}}{w_{sT}} =\frac{T_1}{T_5}\, \frac{c_{p_V}\,\left[ \left( \frac{p_2}{p_1} \right)^{\frac{\kappa_V-1}{\kappa_V}} -1 \right]}{c_{p_T}\, \left[1- \left( \frac{p_6}{p_5} \right)^{\frac{\kappa_T-1}{\kappa_T}}  \right]}
+	\end{align*}
+\end{sectionbox}
+
+
+%\columnbreak
+% SECTION ====================================================================================
+\section{Energiebilanz}
+% ============================================================================================
+% latex4ei uses the "mhchem" package version 3. Use the \ce{...} command to typeset chemical equations
+\colorlet{col_sectionbox}{rot}
+\begin{sectionbox}
+	\begin{align*}
+		\varDelta \dot{H}_A&=\sum_{i}\dot{n}_i \left[ h_i(T_A) - h_i(T_0) \right]
+		=\dot{n}_A \,\sum_{i} \psi_i \left[ h_i(T_A) - h_i(T_0) \right]\\
+		&=\dot{m}_A \,\sum_{i}\frac{g_i}{M_i} \left[ h_i(T_A) - h_i(T_0) \right]\\
+		\varDelta\dot{H}_A&= \dot{H}_A(T_A) -\dot{H}_{AH}(T_{Eintritt})
+	\end{align*}
+\end{sectionbox}
+
+
+\begin{sectionbox}
+	\begin{align*}
+		1&=\underbrace{\frac{P_e}{\dot{m}_B \, H_u}}_{\eta_{e}}+\frac{\varDelta \dot{H}_A}{\dot{m}_B \, H_u}+\frac{\varDelta \dot{H}_{KW}}{\dot{m}_B \, H_u}+\frac{\varDelta \dot{H}_{LLK}}{\dot{m}_B \, H_u}
+		+\frac{ \dot{Q}_R}{\dot{m}_B \, H_u}
+	\end{align*}
+\end{sectionbox}
+\begin{sectionbox}
+	\begin{align*}
+		P_e&=\sum_{i} \frac{P_{an,i}}{\eta_{an,i}} \qquad
+		P_{chem}=\dot{m}_B H_u = \sum_{i} \dot{m}_{B,i} H_{u,i}
+	\end{align*}
+\end{sectionbox}
+
+% SECTION ====================================================================================
+\section{Wärmeübertragung}
+% ============================================================================================
+\colorlet{col_sectionbox}{lilapink}
+\begin{sectionbox}
+	\begin{align*}
+		\varphi_m&=\varphi_{Konv}=\alpha_{mi}\left[ T_{\alpha i} -T_{mWi}\right]\\
+		\varphi_{m(TR)}&=\varphi_{WLeit}=\frac{\lambda}{d_{wand}}\left[ T_{W_{li}} -T_{W_{re}}\right]\, \left(\cdot f_{TR}\right)\\
+		& f_{TR} = \frac{\frac{D_A}{D_i}-1}{\ln\left( \frac{D_A}{D_i} \right)}
+	\end{align*}
+\end{sectionbox}
+\begin{sectionbox}
+	\begin{align*}
+		\varphi_{m (TR)}&=\frac{\lambda}{B_{(TR)}}\left( T_{\alpha i}-T_{a} \right)\\
+		&B=\frac{\lambda}{\alpha_{mi}}+\delta+\frac{\lambda}{\alpha_a} \quad \text{mit} \quad \delta=\frac{D_a-D_i}{2}\\
+		&B_{TR}=\frac{\lambda}{\alpha_{mi}}+\frac{\delta}{f_{TR}}+\frac{\lambda}{\alpha_a}\frac{D_i}{Da}
+	\end{align*}
+\end{sectionbox}
+%\columnbreak
+
+
+% SECTION ====================================================================================
+\section{Kräfte}
+% ============================================================================================
+% latex4ei uses the "mhchem" package version 3. Use the \ce{...} command to typeset chemical equations
+\colorlet{col_sectionbox}{lilalila}
+\begin{sectionbox}
+	\begin{align*}
+		F_{Ko,osz}&=m_{osz}\,\left( \cos(\alpha)+\lambda_S\,\cos(2\alpha) \right)\,r\,\omega^2\\
+		&\rightarrow\,m_{osz}=m_{Ko}+m_{Pl,osz}\\
+		&\rightarrow\,m_{Pl,osz}=\frac{l_{1,\left(sp \leftrightarrow kw\right)}}{l_{2,\left(sp \leftrightarrow ko\right)}}\,m_{Pl,rot}\\
+		&\rightarrow\,m_{Pl,rot}=\frac{l_{2,\left(sp \leftrightarrow ko\right)}}{l}\,m_{Pl}\\
+		F_{Pl}&=\frac{F_{Ko,osz}}{\cos(\beta)}\\
+		F_T&=F_{Pl}\,\sin(\alpha+\beta)\approx F_{KO,res}\cdot \left( \sin(\alpha)+\frac{\lambda_S}{2} \cdot \sin(2 \alpha)\right)\\
+		F_R&=F_{Pl}\,\cos(\alpha+\beta)\approx F_{KO,res}\cdot\left( -\frac{\lambda_S}{2}+cos(\alpha)+ \frac{\lambda_S}{2}\cdot \cos(2 \alpha)\right)\\
+		F_{Ko,Anwechsel}&=F_G-F_{Ko,osz}\,(\pm\,F_{Reib})\overset{\text{!}}{=}0
+	\end{align*}
+
+\end{sectionbox}
+
+% SECTION ====================================================================================
+\section{Massenausgleich}
+% ============================================================================================
+% latex4ei uses the "mhchem" package version 3. Use the \ce{...} command to typeset chemical equations
+\colorlet{col_sectionbox}{dunkelblau}
+\begin{sectionbox}
+	\begin{align*}
+	F_{(1,2),res}&=\sqrt{F_{+(1,2),res}^2+F_{-(1,2),res}^2}\\
+	&F_{(\pm)(1,2),res}=\sqrt{F_{(\pm)(1,2),x}^2+F_{(\pm)(1,2),y}^2}\\
+	&F_{+(1,2)}=F_{-(1,2)}=\frac{1}{2}\,F_{01,(02)}=\frac{1}{2}\,m_{osz}\,r\,\omega^2\,(\lambda_S)\\
+	M_{(1,2),res}&=\sqrt{M_{+(1,2),res}^2+M_{-(1,2),res}^2}\\
+	&M_{(\pm)(1,2),res}=\sqrt{M_{(\pm)(1,2),x}^2+M_{(\pm)(1,2),y}^2}
+	\end{align*}
+\end{sectionbox}
+
+\begin{sectionbox}
+	\begin{align*}
+	F_{osz}&=F_{Ko,osz}=m\,a
+	=m_{osz}\,r\,\omega^2\,\left( \cos(\alpha)+\lambda_S\,\cos(2\alpha) \right)\\
+	F_{rot}&=m_{rot}\,a=m_{rot}\,r\,\omega^2
+	=\left( m_{KK,red}+m_{Pl,rot} \right)\,r\,\omega^2\\
+	&m_{KK,red}=\frac{r_1}{r}\,m_{KW}
+	\end{align*}
+\end{sectionbox}
+\begin{sectionbox}
+	\begin{align*}
+		M_{1,osz}&= \left\|M_{1,min}\right\|\cdot 2\\
+		M_{1,rot}&=\left\|M_{1,max}\right\| -\left\|M_{1,min}\right\|
+	\end{align*}
+\end{sectionbox}
+
+\columnbreak
+% SECTION ====================================================================================
+\section{Kinematik}
+% ============================================================================================
+% latex4ei uses the "mhchem" package version 3. Use the \ce{...} command to typeset chemical equations
+
+\colorlet{col_sectionbox}{blau}
+\begin{sectionbox}
+	\begin{align*}
+		s_{exakt}(\alpha)&=r \left[ ( 1- \cos(\alpha) )+\frac{1}{\lambda_S} \left( 1- \sqrt{1-\lambda_S^2  \sin^2(\alpha)} \right) \right]\\
+		s_{approx}(\alpha)&=r  \left[ ( 1- \cos(\alpha) )+ \frac{\lambda_S}{4} ( 1- \cos(2 \alpha) ) \right]\\
+		&\overset{\lambda_S \to 0}{\approx} r  ( 1- \cos(\alpha) )\\
+		\lambda_S&=\frac{r}{l}=\frac{s}{2 l}
+	\end{align*}
+\end{sectionbox}
+
+\begin{sectionbox}
+	\begin{align*}
+		c_{exakt}(\alpha)&=r\,\omega\left[ \sin(\alpha)+\frac{\lambda_S\,\sin)(\alpha)\,\cos(\alpha)}{\sqrt{1-\lambda_S^2 \, \sin^2(\alpha)}} \right]\\
+		c_{approx}(\alpha)&=r\,\omega\left[ \sin(\alpha)+\frac{\lambda_S}{4}\,\sin(2\alpha) \right]\\
+		&\overset{\lambda_S \to 0}{\approx} r\,\omega\,\sin(\alpha)\\
+		c_{max}&=r\,\omega\,\sqrt{1+\lambda_S^2}\quad\sphericalangle(r,l)\rightarrow \bot\\
+		&\alpha(c_{max})=\arctan\left(\frac{l}{r}\right)=\arctan\left( \frac{1}{\lambda_S} \right)\\
+		c_m&=2\,s\,n=4\,r\,n
+	\end{align*}
+\end{sectionbox}
+\begin{sectionbox}
+	\begin{align*}
+		a_{approx}(\alpha)&=r\,\omega^2\,\left[ \cos(\alpha)+\lambda_S\,\cos(2\alpha) \right]\\
+		&\overset{\lambda_S \to 0}{\approx}\,r\,\omega^2\,\cos(\alpha)
+	\end{align*}
+\end{sectionbox}
+ %\columnbreak
+% SECTION ====================================================================================
+\section{Ventiltrieb}
+% ============================================================================================
+% latex4ei uses the "mhchem" package version 3. Use the \ce{...} command to typeset chemical equations
+\colorlet{col_sectionbox}{hellgruen}
+\begin{sectionbox}
+	\begin{align*}
+		F_N&=F_{F,red}+m_{N,red}\,\underbrace{a_N}_{=\ddot{s}_N} \left( +p_{\text{AÖ}}\,\frac{\pi}{4}\,d_V^2 \,i \right) \overset{!}{\ge} 0 \qquad i=\frac{l_{1,h \leftrightarrow v}}{l_{2,h \leftrightarrow n}}\\
+		&\Rightarrow\omega_{NW}=\sqrt{- \frac{F_{F,red}}{m_{N,red}\,s''_V}}\\
+		F_{F,red}&=F_F\,i=(s_{v0}+s_N\,i)\,i \, c_F=(s_{v0}+s_V\,)\, i\,c_F\\
+		m_{N,red}&= \left( m_{1,v}+\frac{m_{2,f}}{2}+m_{3,(t,k)} \right) i^2
+		   +\frac{J_K}{l_{2,(h \leftrightarrow n)}^2}+m_{5,st}+m_{6,stoe}
+	\end{align*}
+
+\end{sectionbox}
+\begin{sectionbox}
+	\begin{align*}
+		s'&=\frac{\diff s}{\diff \alpha}\\
+		&\Rightarrow\, \ddot{s}_N=a=s_N''\,\omega_{NW}^2=s_N''\left( \omega_{NW} S_n\right)^2\\
+		s_N&=\frac{1}{i}\, s_V \quad \dot{s}_N=\frac{1}{i}\,\dot{s}_V \quad \ddot{s}_N=\frac{1}{i}\,\ddot{s}_V\\
+		s_N&=\frac{1}{i}\, s_V \quad s'_N=\frac{1}{i}\,s'_V \quad s''_N=\frac{1}{i}\,s''_V\\
+		s_{(v,n),2}&=\frac{s''_{(v,n),2}}{s''_{(v,n),1}} s_{(v,n),1}
+	\end{align*}
+\end{sectionbox}
+%\columnbreak
+
+% SECTION ====================================================================================
+\section{Brennverlaufsanalyse}
+% ============================================================================================
+% latex4ei uses the "mhchem" package version 3. Use the \ce{...} command to typeset chemical equations
+\colorlet{col_sectionbox}{gruen}
+\begin{sectionbox}
+	\begin{align*}
+		\diff Q_B &= \frac{\kappa}{\kappa -1}p_{\alpha_1} \diff V+\frac{1}{\kappa -1}V_{\alpha_1} \diff p+\alpha_i \, A_{W} \left( T_{\alpha_1}-T_{mWi} \right)\diff t\\
+		 &T_{i,(\alpha_1)}=\frac{p_{\alpha_1} V_{\alpha_1}}{m_G R_G}\\
+		&A_{W,\alpha_1}=A_{Kolben}+A_{Kopf}+\underbrace{A_{Wand}\,(+A_{Kompr})}_{=\pi D (s+(s_s))}\\
+		&V_{\alpha_1}= V_c + \frac{\pi}{4}D^2 s_{\alpha_1}\\
+		&v(\alpha)= v_c+ \frac{s(\alpha)}{s(180^\circ KW) }\cdot\left( v_1-v_2 \right)\\
+		&\diff t= \frac{\varDelta \alpha}{360^{\circ}KW \cdot n}\\
+		\diff m_B &=\frac{\diff Q_B}{H_u}
+	\end{align*}
+
+\end{sectionbox}
+\columnbreak
+% SECTION ====================================================================================
+\section{Ähnlichkeit}
+% ============================================================================================
+% latex4ei uses the "mhchem" package version 3. Use the \ce{...} command to typeset chemical equations
+\colorlet{col_sectionbox}{orange}
+\begin{sectionbox}
+	\begin{alignat*}{3}
+		&c_m =\text{const.}\qquad && p(\alpha)=\text{const.}\qquad && T_{\alpha i}=\text{const.}\\
+		&\frac{s_2}{s_1}= x \quad &&	\frac{A_2}{A_1}=x^2 \quad&& \frac{V_2}{V_1}=x^3\\
+	   	&\sigma_m \propto c_m^2 \quad &&   && t_{\text{ü}}\propto D=s \\
+	\end{alignat*}
+\end{sectionbox}
+
+% SECTION ====================================================================================
+\section{Spannungen}
+% ============================================================================================
+\colorlet{col_sectionbox}{braun}
+\begin{sectionbox}
+	\begin{align*}
+	S&=\frac{\sigma_B}{\sigma_{mech}+\sigma_{therm}}\\
+	&\sigma_{mech}=\frac{p_Z \cdot D}{2 \, \delta}\\
+	&\sigma_{therm}=\frac{E \cdot \alpha_L}{1-\nu} \frac{T_{mWi}-T_{mWa}}{2}
+	\end{align*}
+\end{sectionbox}
+\columnbreak
+
+% SECTION ====================================================================================
+\section{Allgemein}
+% ============================================================================================
+\colorlet{col_sectionbox}{schwarz}
+\begin{sectionbox}
+	\begin{align*}
+	\frac{y_g-y_1}{x_g-x_1}=\frac{ y_2-y_1}{x_2-x_1}& \qquad
+	x_{1,2} = -\frac{p}{2}\pm  \sqrt{\frac{p^2}{4}-q}= \frac{- b \pm \sqrt{ b^{2} – 4ac } }{2a}\\
+	\varDelta X_{\%} &= \frac{X_{neu}-X_{alt}}{X_{alt}}\cdot 100 \%\\
+	i_{antrieb}&=\frac{n_{mot}}{n_{rad}}= \frac{M_{rad}}{M_{mot} \cdot \eta_{antrieb}}
+	\end{align*}
+\end{sectionbox}
+% DOCUMENT_END =================================================================
+\end{document}
